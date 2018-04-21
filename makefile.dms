@@ -1,0 +1,17 @@
+#macros
+FLAGS = -g
+
+
+test: main.o bst.o
+	clang++ $(FLAGS) bst.o main.o -o test
+	@echo "All done"
+
+bst.o: bst.cpp
+	clang++ $(FLAGS) -c bst.cpp
+
+main.o: main.cpp bst.cpp
+	clang++ $(FLAGS) -c main.cpp
+
+clean:
+	 rm -f test *.o
+
